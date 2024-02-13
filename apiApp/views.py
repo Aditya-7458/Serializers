@@ -4,9 +4,8 @@ from .models import Products
 from django.http import JsonResponse
 
 
+
 def Home(request):
-
-    info=Products.objects.all()
-    ser=ProductsSerializer(info,many=True)
-
-    return JsonResponse(ser.data,safe=False)
+    info = Products.objects.all()
+    ser = ProductsSerializer(info, many=True)
+    return render(request, 'home.html', {'productsData': ser.data})
